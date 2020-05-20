@@ -1,0 +1,23 @@
+<h1>Lista de Minutas</h1>
+
+<a href="{% url 'minuta-create' %}">Crear</a>
+
+ <table border="1">
+  <tr>
+    <th>Nombre</th>
+    <th>Platos</th>
+    <th>Acciones</th>
+  </tr>
+{% for minuta in object_list %}
+  <tr>
+    <td> {{ minuta.nombre }}</td>
+    <td> {{ minuta.platillo.all |join:" - " }}</td>
+    <td>
+        <a href="{% url 'minuta-delete' minuta.id %}">Eliminar</a>
+         <a href="{% url 'minuta-edit' minuta.id %}">Editar</a>
+    </td>
+
+  </tr>
+{% endfor %}
+
+</table>
